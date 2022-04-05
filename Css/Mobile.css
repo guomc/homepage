@@ -1,0 +1,37 @@
+* {
+	font-size: 40px;
+}
+
+#changeBK {
+	position: fixed;
+	bottom: 0px;
+	left: 50%;
+}
+
+.my1{
+	list-style-type:none;
+        position:relative;
+        left:10%;
+}
+.li1{
+	float:left
+}
+
+.part {
+	width: 100%;
+}
+
+.part select {
+	width: 70%;
+}
+
+.part legend {
+	color: rgb(255, 0, 0);
+}
+
+.background {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}

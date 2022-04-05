@@ -1,0 +1,35 @@
+﻿* {
+	margin: 0px;
+	padding: 0px;
+	color: rgb(0,0,0);
+}
+
+#changeBK {
+	position: fixed;
+	bottom: 0px;
+	left: 50%;
+}
+
+.my1{
+	list-style-type:none;
+        position:relative;
+        left:35%;
+}
+.li1{
+	float:left
+}
+
+.part {
+	width: 250px;
+}
+
+.part select {
+	width: 200px;
+}
+
+.background {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
