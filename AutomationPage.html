@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>国金涛的网址导航</title>
+<link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+//移动端和pc端加载不同的style--------------------------------------------------------------
+var isPC = true;
+var links = document.createElement("link");
+links.rel = "stylesheet";
+links.type = "text/Css";
+if (window.innerWidth > window.innerHeight){
+	links.href = "Css/PC.css";
+} else {
+	isPC = false;
+	links.href = "Css/Mobile.css"
+}
+document.documentElement.appendChild(links);
+//函数-------------------------------------------------------------------------------------
+//随机背景
+function randBK() {
+	if(document.cookie==""){
+		var nDate = new Date();
+		i = nDate.getSeconds() % 10;
+		if (isPC)
+			var str = "Img/th" + i + ".jpg";
+		else
+			var str = "Img/thh" + i + ".jpg";
+		//设置cookie的有效时间，也可以使用setHours()、getHours()设置为小时，setMinutes()、	getMinutes()设置为分钟
+		var nDate = new Date();
+		nDate.setDate(nDate.getDate() + 30);
+		//直接接在后面expires才会有效
+		document.cookie = str+";" + nDate.toGMTString();
+	}
+	//alert(document.cookie.split(";")[0]);
+	document.getElementsByTagName('img')[0].src = document.cookie.split(";")[0];
+}
+//程序一：常规逻辑
+//随机正常体温
+function randMark(){
+	var str="";
+	for(var i=0;i<10;++i)
+		str+="<p>"+(363+Math.floor(Math.random()*10))/10+"</p>";
+	document.getElementById("randMarkArea").innerHTML=str;
+}
+//随机六位长度的秘钥
+function randKey(){
+	var str="!\"#$%&'()*+,-./0123456789:;<=>@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^`abcdefghijklmnopqrstuvwxyz{|}~"
+	var len=str.length;
+	var res="  ";
+	for(var i=0;i<6;++i){
+		res+=str.charAt(Math.floor(Math.random()*100)%len);
+	}
+	document.getElementById("randKeyArea").innerHTML=res;
+}
+//表达式计算器
+function calculater(){
+	var str=document.getElementById("calcuValue").value;
+	if(str!=""){
+		try{
+			//console.log("str: "+str);
+			//表达式不能含有字母，防止恶意攻击
+			var reg=new RegExp(/[a-z]/i);
+			if(reg.test(str))document.getElementById("calcuArea").value="表达式恶意错误！";
+			else document.getElementById("calcuArea").value=eval(str);
+		}catch(e){
+			document.getElementById("calcuArea").value="表达式错误："+e;
+		}
+	}else document.getElementById("calcuArea").value="表达式为空！";
+}
+//程序二：记事本
+function fileHint(str){
+	//console.log("enter :\n"+str);
+	//xmlhttp是一个关键对象
+    	if (window.XMLHttpRequest)
+        	// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+        	xmlhttp=new XMLHttpRequest();
+    	else 
+		//IE6, IE5 浏览器执行的代码
+        	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	//绑定函数，当页面的状态发生改变的时候调用函数
+    	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			document.getElementById("fileHintArea").value=xmlhttp.responseText;
+	}
+	if(str=="keep"){
+		str=document.getElementById("fileHintArea").value.replace(/\n/g,'\\n');
+		str=str.replace(/\"/g,'\\"');
+		alert("文件已保存");
+	}else{
+		str="cancel";
+	}
+	//console.log("transe :\n"+str);
+	//封装多个数据
+	var fileObj = new FormData();
+	fileObj.append("q",str);
+	xmlhttp.open("POST","./Php/AutomationPage_fileHint.php",true);
+	xmlhttp.send(fileObj);
+}
+//程序三：网络通讯（php加定时器）	
+var netStr="";
+function netListening(){
+	//xmlhttp是一个关键对象
+    	if (window.XMLHttpRequest)
+        	// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+        	xmlhttp=new XMLHttpRequest();
+    	else 
+		//IE6, IE5 浏览器执行的代码
+        	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	//绑定函数，当页面的状态发生改变的时候调用函数
+    	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			netStr=netStr+xmlhttp.responseText+"\n";
+		}
+			document.getElementById("netListeningArea").value=netStr;
+	}
+	str="zhanghao="+document.getElementById("zhanghao").value+"&mima="+document.getElementById("mima").value+"&SQL="+document.getElementById("SQL").value;
+	//alert("文件已保存");
+	xmlhttp.open("POST","./Php/netListening.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send(str);
+}
+var ObjTimer;
+function OwnTimer(){
+	var s=parseInt(document.getElementById("sNum").value);
+	alert(s+10);
+	if(s>0)
+		ObjTimer=window.setInterval(netListening,parseInt(s*1000));
+	else{
+		netStr="";
+		window.clearInterval(ObjTimer);
+	}
+}
+//程序五：打印
+function pagePrint(){
+	window.print();
+}
+</script>
+</head>
+<body onload="randBK();randMark();randKey();fileHint('cancel');">
+<img src="" class="background">
+<ul class="my1">
+    <li class="li1"><a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="CheckPage.html">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="UploadPage.html">上传</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="DownloadPage.html">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="MultimediaPage.html">多媒体</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="AutomationPage.html">自动化</a></li>
+</ul><br>
+<p>程序一：常规逻辑</p>
+<p>随机正常体温</p>
+<button onclick="randMark();">更新数据</button>
+<pre id="randMarkArea"></pre>
+<p>随机六位长度的秘钥</p>
+<button onclick="randKey();">更新数据</button>
+<pre id="randKeyArea"></pre>
+<p>表达式计算器<input type="text"" id="calcuValue"><button onclick="calculater();">开始计算</button></p>
+计算结果是：<input type="text"" id="calcuArea">
+<hr>
+<p>程序二：记事本</p>
+<textarea wrap="off" style="overflow: scroll; width: 500px; height: 250px;" id="fileHintArea"></textarea><br/>
+<form>
+	<input type="button" value="取消" onclick="fileHint('cancel')">
+	<input type="button" value="保存" onclick="fileHint('keep')">
+</form>
+<hr>
+<p>程序三：网络通讯（php加定时器）</p>
+<form>
+	<p>账号：<input type="text"" id="zhanghao" value="admin"></p>
+	<p>密码：<input type="text"" id="mima" value="123456"></p>
+	<p>要执行的SQL语句：<input type="text" id="SQL" value="select * from ResInfo where RSID=4;"></p>
+	<p>刷新时间（s）：<input type="text" id="sNum" value="5"><input type="button" value="确定" onclick="OwnTimer()"></p>
+</form>
+<textarea wrap="off" style="overflow: scroll; width: 500px; height: 250px;" id="netListeningArea"></textarea><br/>
+<p>程序五：打印</p>
+<button onclick="pagePrint()">开始打印</button>
+</body>
+</html>
