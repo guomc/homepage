@@ -1,0 +1,1013 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=x-cp20936">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="Mysql常识.files/filelist.xml">
+<title>mysql数据类型</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="chsdate"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Administrator</o:Author>
+  <o:LastAuthor>微软用户</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>7</o:TotalTime>
+  <o:Created>2022-04-05T05:01:00Z</o:Created>
+  <o:LastSaved>2022-04-05T05:01:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>240</o:Words>
+  <o:Characters>1370</o:Characters>
+  <o:Company>微软中国</o:Company>
+  <o:Lines>11</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>1607</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+ <o:CustomDocumentProperties>
+  <o:KSOProductBuildVer dt:dt="string">2052-11.1.0.9021</o:KSOProductBuildVer>
+ </o:CustomDocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-parent:"";
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:10.5pt;
+	mso-bidi-font-size:22.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:22.0pt;
+	font-weight:normal;
+	mso-bidi-font-weight:bold;}
+h2
+	{mso-style-parent:"";
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:10.5pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:normal;
+	mso-bidi-font-weight:bold;}
+h3
+	{mso-style-parent:"";
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:10.5pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:normal;
+	mso-bidi-font-weight:bold;}
+h4
+	{mso-style-parent:"";
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:10.5pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:normal;
+	mso-bidi-font-weight:bold;}
+h5
+	{mso-style-parent:"";
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:10.5pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:normal;
+	mso-bidi-font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-noshow:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-noshow:yes;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:2.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-noshow:yes;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:42.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:0cm 0cm 0cm 0cm;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:15.6pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-CN link=blue vlink=purple style='tab-interval:21.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US>mysql</span></span><span
+style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+"Times New Roman"'>数据类型</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=834
+ style='width:625.5pt;background:white;border-collapse:collapse;mso-padding-alt:
+ 0cm 0cm 0cm 0cm'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>TINYINT</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>1 byte</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-128</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>127)</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>255)</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>小整数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>SMALLINT</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>2 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-32 768</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>32 767)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>65 535)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>大整数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>MEDIUMINT</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>3 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-8 388 608</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>8 388 607)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>16 777 215)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>大整数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>INT</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>或</span><span
+  lang=EN-US>INTEGER</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>4 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-2 147 483 648</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，</span><span lang=EN-US>2 147 483 647)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>4 294 967 295)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>大整数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>BIGINT</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>8 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-9,223,372,036,854,775,808</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，</span><span lang=EN-US>9 223 372 036 854 775 807)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>18 446 744 073 709 551 615)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>极大整数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>FLOAT</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>4 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-3.402 823 466 E+38</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，</span><span lang=EN-US>-1.175 494 351 E-38)</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，</span><span lang=EN-US>0</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>(1.175 494 351 E-38</span><span style='font-family:宋体;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>3.402 823 466 351 E+38)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>(1.175 494 351 E-38</span><span style='font-family:宋体;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>3.402 823 466 E+38)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>单精度</span><span lang=EN-US><br>
+  </span><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>浮点数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>DOUBLE</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>8 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>(-1.797 693 134 862 315 7 E+308</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，</span><span lang=EN-US>-2.225 073 858 507 201 4 E-308)</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，</span><span lang=EN-US>0</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>(2.225 073 858 507 201 4 E-308</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>1.797 693 134 862 315 7 E+308)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0</span><span style='font-family:宋体;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>(2.225 073 858 507 201 4 E-308</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，</span><span
+  lang=EN-US>1.797 693 134 862 315 7 E+308)</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>双精度</span><span lang=EN-US><br>
+  </span><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>浮点数值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>DECIMAL</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>对</span><span lang=EN-US>DECIMAL(M,D)
+  </span><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>，如果</span><span lang=EN-US>M&gt;D</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，为</span><span lang=EN-US>M+2</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>否则为</span><span lang=EN-US>D+2</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>依赖于</span><span lang=EN-US>M</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>和</span><span lang=EN-US>D</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的值</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>依赖于</span><span lang=EN-US>M</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>和</span><span lang=EN-US>D</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的值</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>小数值</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=834
+ style='width:625.5pt;background:white;border-collapse:collapse;mso-padding-alt:
+ 0cm 0cm 0cm 0cm'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width="10%" valign=top style='width:10.0%;border:solid #D4D4D4 1.0pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>DATE</span></p>
+  </td>
+  <td width="10%" valign=top style='width:10.0%;border:solid #D4D4D4 1.0pt;
+  border-left:none;mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>3</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><st1:chsdate Year="1000" Month="1" Day="1"
+  IsLunarDate="False" IsROCDate="False" w:st="on"><span lang=EN-US>1000-01-01</span></st1:chsdate><span
+  lang=EN-US>/<st1:chsdate Year="9999" Month="12" Day="31" IsLunarDate="False"
+  IsROCDate="False" w:st="on">9999-12-31</st1:chsdate></span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>YYYY-MM-DD</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>日期值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width="10%" valign=top style='width:10.0%;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>TIME</span></p>
+  </td>
+  <td width="10%" valign=top style='width:10.0%;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>3</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>'-838:59:59'/'838:59:59'</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>HH:MM:SS</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>时间值或持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width="10%" valign=top style='width:10.0%;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>YEAR</span></p>
+  </td>
+  <td width="10%" valign=top style='width:10.0%;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>1</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>1901/2155</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>YYYY</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>年份值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width="10%" valign=top style='width:10.0%;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>DATETIME</span></p>
+  </td>
+  <td width="10%" valign=top style='width:10.0%;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>8</span></p>
+  </td>
+  <td width="40%" valign=top style='width:40.0%;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>1000-01-01 00:00:00/9999-12-31 23:59:59</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>YYYY-MM-DD HH:MM:SS</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>混合日期和时间值</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td width="10%" valign=top style='width:10.0%;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>TIMESTAMP</span></p>
+  </td>
+  <td width="10%" valign=top style='width:10.0%;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>4</span></p>
+  </td>
+  <td width="40%" valign=top style='width:40.0%;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>1970-01-01 00:00:00/2038</span></p>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>结束时间是第</span><span lang=EN-US>&nbsp;<b>2147483647</b>&nbsp;</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>秒，北京时间</span><span lang=EN-US>&nbsp;<b>2038-1-19 11:14:07</b></span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>，格林尼治时间</span><span lang=EN-US> 2038</span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>年</span><span lang=EN-US>1</span><span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>月</span><span
+  lang=EN-US>19</span><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>日</span> <span style='font-family:
+  宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>凌晨</span><span
+  lang=EN-US> 03:14:07</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>YYYYMMDD HHMMSS</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>混合日期和时间值，时间戳</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=834
+ style='width:625.5pt;background:white;border-collapse:collapse;mso-padding-alt:
+ 0cm 0cm 0cm 0cm'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>CHAR</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border:solid #D4D4D4 1.0pt;
+  border-left:none;mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-255 bytes</span></p>
+  </td>
+  <td valign=top style='border:solid #D4D4D4 1.0pt;border-left:none;mso-border-left-alt:
+  solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>定长字符串</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>VARCHAR</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-65535 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>变长字符串</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>TINYBLOB</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-255 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>不超过</span><span lang=EN-US> 255 </span><span
+  style='font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>个字符的二进制字符串</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>TINYTEXT</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-255 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>短文本字符串</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>BLOB</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-65 535 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>二进制形式的长文本数据</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>TEXT</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-65 535 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>长文本数据</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>MEDIUMBLOB</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-16 777 215 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>二进制形式的中等长度文本数据</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>MEDIUMTEXT</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-16 777 215 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>中等长度文本数据</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>LONGBLOB</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-4 294 967 295 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>二进制形式的极大文本数据</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes'>
+  <td width=281 valign=top style='width:210.75pt;border:solid #D4D4D4 1.0pt;
+  border-top:none;mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>LONGTEXT</span></p>
+  </td>
+  <td width=148 valign=top style='width:111.35pt;border-top:none;border-left:
+  none;border-bottom:solid #D4D4D4 1.0pt;border-right:solid #D4D4D4 1.0pt;
+  mso-border-top-alt:solid #D4D4D4 .75pt;mso-border-left-alt:solid #D4D4D4 .75pt;
+  mso-border-alt:solid #D4D4D4 .75pt;background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span lang=EN-US>0-4 294 967 295 bytes</span></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid #D4D4D4 1.0pt;
+  border-right:solid #D4D4D4 1.0pt;mso-border-top-alt:solid #D4D4D4 .75pt;
+  mso-border-left-alt:solid #D4D4D4 .75pt;mso-border-alt:solid #D4D4D4 .75pt;
+  background:#F6F4F0;padding:5.25pt 3.75pt 5.25pt 3.75pt'>
+  <p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>极大文本数据</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-family:宋体;mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>建表</span></p>
+
+<p class=MsoNormal><span class=GramE><span lang=EN-US>create</span></span><span
+lang=EN-US> table <span class=SpellE>ResInfo</span>(</span></p>
+
+<p class=MsoNormal><span lang=EN-US>RSID <span class=SpellE>int</span> primary
+key <span class=SpellE>auto_increment</span>,</span></p>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US>RSName</span></span><span
+lang=EN-US> <span class=SpellE><span class=GramE>varchar</span></span><span
+class=GramE>(</span>60),</span></p>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US>RSContent</span></span><span
+lang=EN-US> <span class=SpellE><span class=GramE>varchar</span></span><span
+class=GramE>(</span>60),</span></p>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US>RSReleaseDate</span></span><span
+lang=EN-US> <span class=SpellE>datetime</span>);</span></p>
+
+</div>
+
+</body>
+
+</html>
