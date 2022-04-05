@@ -16,7 +16,7 @@ if (info == null) {
 		
 	alert("不允许直接访问");
 		
-	location = "login.html";
+	location = "Login.html";
 	
 } 
 else {
@@ -37,17 +37,16 @@ else {
 			
 		nDate.setSeconds(nDate.getSeconds() + 5);
 			
-		document.cookie = ",big0=10001231,big1=10001567,random=" + random
- + ";expires=" + nDate.toGMTString();
+		document.cookie = ",big0=10001231,big1=10001567,random=" + random + ";expires=" + nDate.toGMTString();
 			
-		location = "links.html";
+		location = "Links.html";
 		
 	} 
 	else {
 			
 		alert("验证错误");
 			
-		location = "login.html";
+		location = "Login.html";
 		
 	}
 	
