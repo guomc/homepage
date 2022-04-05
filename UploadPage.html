@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>国金涛的网址导航</title>
+<link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+//移动端和pc端加载不同的style--------------------------------------------------------------
+var isPC = true;
+var links = document.createElement("link");
+links.rel = "stylesheet";
+links.type = "text/Css";
+if (window.innerWidth > window.innerHeight){
+	links.href = "Css/PC.css";
+} else {
+	isPC = false;
+	links.href = "Css/Mobile.css"
+}
+document.documentElement.appendChild(links);
+//函数-------------------------------------------------------------------------------------
+//随机背景
+function randBK() {
+	if(document.cookie==""){
+		var nDate = new Date();
+		i = nDate.getSeconds() % 10;
+		if (isPC)
+			var str = "Img/th" + i + ".jpg";
+		else
+			var str = "Img/thh" + i + ".jpg";
+		//设置cookie的有效时间，也可以使用setHours()、getHours()设置为小时，setMinutes()、	getMinutes()设置为分钟
+		var nDate = new Date();
+		nDate.setDate(nDate.getDate() + 30);
+		//直接接在后面expires才会有效
+		document.cookie = str+";" + nDate.toGMTString();
+	}
+	//alert(document.cookie.split(";")[0]);
+	document.getElementsByTagName('img')[0].src = document.cookie.split(";")[0];
+}
+//多文件传输
+function mulFileUpload(){
+	//xmlhttp是一个关键对象
+	if (window.XMLHttpRequest)
+		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+	        xmlhttp=new XMLHttpRequest();
+	else 
+		//IE6, IE5 浏览器执行的代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	//绑定函数，当页面的状态发生改变的时候调用函数
+	xmlhttp.onreadystatechange=function(){
+	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		document.getElementById("UploadFilesArea").innerHTML=xmlhttp.responseText;
+	}
+	//封装多个数据
+	var fileObj = new FormData();
+	var arr=document.getElementById("UploadFiles").files;
+	fileObj.append("fileLen",arr.length);
+	for(var i=0;i<arr.length;++i)
+		fileObj.append("file"+i,arr[i]);
+	xmlhttp.open("POST","./Php/MulFileUpload.php",true);
+	xmlhttp.send(fileObj);
+}
+</script>
+</head>
+<body onload="randBK();">
+<img src="" class="background">
+<ul class="my1">
+    <li class="li1"><a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="CheckPage.html">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="UploadPage.html">上传</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="DownloadPage.html">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="MultimediaPage.html">多媒体</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="AutomationPage.html">自动化</a></li>
+</ul><br>
+<form>
+	<p style="color:red;">注意：单次上传网络不要超过1000M</p>
+	<input type="file" id="UploadFiles" multiple="multiple"/><input type="button" value="提交" onclick="mulFileUpload()"/>
+</form>
+<p>文件上传结果：</p>
+<pre id="UploadFilesArea"></pre>
+</body>
+</html>

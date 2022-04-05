@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>验证页面</title>
+
+<script type="text/javascript">
+	
+var info = (location + "").split("?")[1];
+	
+if (info == null) {
+		
+	alert("不允许直接访问");
+		
+	location = "login.html";
+	
+} 
+else {
+		
+	var pairs0 = info.split("&")[0], pairs1 = info.split("&")[1];
+		
+	var username = pairs0.split("=")[1], password = pairs1.split("=")[1];
+		
+	if (username == "admin" && password == "123456") {
+						
+		//设置5秒的cookie，表示页面已经验证过
+			
+		var random = Math.random();
+			
+		prompt("验证通过，随机密钥是", random);
+			
+		var nDate = new Date();
+			
+		nDate.setSeconds(nDate.getSeconds() + 5);
+			
+		document.cookie = ",big0=10001231,big1=10001567,random=" + random
+ + ";expires=" + nDate.toGMTString();
+			
+		location = "links.html";
+		
+	} 
+	else {
+			
+		alert("验证错误");
+			
+		location = "login.html";
+		
+	}
+	
+}
+
+</script>
+
+</head>
+
+<body>
+	
+<p>I am server.html</p>
+
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>国金涛的网址导航</title>
+<link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+<script type="text/javascript">
+//移动端和pc端加载不同的style--------------------------------------------------------------
+var isPC = true;
+var links = document.createElement("link");
+links.rel = "stylesheet";
+links.type = "text/Css";
+if (window.innerWidth > window.innerHeight){
+	links.href = "Css/PC.css";
+} else {
+	isPC = false;
+	links.href = "Css/Mobile.css"
+}
+document.documentElement.appendChild(links);
+//函数-------------------------------------------------------------------------------------
+//随机背景
+function randBK() {
+	if(document.cookie==""){
+		var nDate = new Date();
+		i = nDate.getSeconds() % 10;
+		if (isPC)
+			var str = "Img/th" + i + ".jpg";
+		else
+			var str = "Img/thh" + i + ".jpg";
+		//设置cookie的有效时间，也可以使用setHours()、getHours()设置为小时，setMinutes()、	getMinutes()设置为分钟
+		var nDate = new Date();
+		nDate.setDate(nDate.getDate() + 30);
+		//直接接在后面expires才会有效
+		document.cookie = str+";" + nDate.toGMTString();
+	}
+	//alert(document.cookie.split(";")[0]);
+	document.getElementsByTagName('img')[0].src = document.cookie.split(";")[0];
+}
+//加载文件夹里面的所有视频音乐
+function multiMedia(){
+	//xmlhttp是一个关键对象
+    	if (window.XMLHttpRequest)
+        	// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+        	xmlhttp=new XMLHttpRequest();
+    	else 
+		//IE6, IE5 浏览器执行的代码
+        	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	//绑定函数，当页面的状态发生改变的时候调用函数
+    	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			document.getElementById("multiMediaArea").innerHTML=xmlhttp.responseText;
+	}	
+	xmlhttp.open("GET","./Php/MultiMediaLoad.php?q="+"../UpDownload/",true);
+	xmlhttp.send();
+}
+//顺序播放和循环播放
+var video_list;
+var curr;
+var btnPlayStr;
+function btnPlay(str){
+	btnPlayStr=str;
+	//xmlhttp是一个关键对象
+    	if (window.XMLHttpRequest)
+        	// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+        	xmlhttp=new XMLHttpRequest(xmlhttp.responseText);
+    	else 
+		//IE6, IE5 浏览器执行的代码
+        	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	//绑定函数，当页面的状态发生改变的时候调用函数
+    	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			video_list=(xmlhttp.responseText).split(",");//初始化播放列表 
+			video_length=video_list.length;//播放列表的长度 
+			curr=0;//当前播放的视频 
+			var video=document.getElementById('video'); 
+			video.addEventListener('ended',playFunc); 
+			playFunc();
+		}
+	}	
+	xmlhttp.open("GET","./Php/MultiMediaFiles.php?q="+"../UpDownload/",true);
+	xmlhttp.send(); 
+}
+function playFunc(){ 
+	video.src=video_list[curr];
+	video.load();//若视频很短，加载完后再播放，监听canplaythrough事件即可  
+	video.play(); 
+	if(curr>=video_length){
+		console.log("enter.");
+		curr=-1;
+		if(btnPlayStr=="order"){
+			video.src=video_list[0]; 
+			video.load();
+			video.pause();		
+			var tmp2=(video_list[0]).split("/");
+			document.getElementById('videoTitle').innerHTML=tmp2[tmp2.length-1];	
+			alert("已经全部播放结束");
+		}else{
+			btnPlay("circulate");
+		}
+	}
+	else{
+		var tmp=(video_list[curr]).split("/");
+		document.getElementById('videoTitle').innerHTML="第"+(curr+1)+"个节目："+tmp[tmp.length-1];
+	}
+	curr++;
+	console.log(curr);
+}
+</script>
+</head>
+<body onload="randBK();multiMedia();">
+<img src="" class="background">
+<ul class="my1">
+    <li class="li1"><a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="CheckPage.html">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="UploadPage.html">上传</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="DownloadPage.html">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="MultimediaPage.html">多媒体</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="li1"><a href="AutomationPage.html">自动化</a></li>
+</ul><br>
+<div style="margin-left: 45%;"><button onclick="btnPlay('order')">顺序播放</button>&nbsp;&nbsp;<button onclick="btnPlay('circulate')">循环播放</button></div>
+<div><pre id="multiMediaArea"></pre></div>
+</body>
+</html>
