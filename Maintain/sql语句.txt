@@ -1,0 +1,38 @@
+﻿进入数据库
+mysql -u root -p
+
+建立表空间
+create database guomcdb character set utf8;
+use guomcdb;
+
+建表，不知道RSContent到底多大，varchar(大值)相当于text
+create table ResInfo(
+RSID int primary key auto_increment,
+RSName varchar(60),
+RSContent LONGTEXT,
+RSReleaseDate datetime);
+
+插入数据
+insert into ResInfo values(null,'张三','I am 张三','2021-11-01 09:30:00');
+insert into ResInfo values(null,'李四','I am 李四','2021-11-01 09:30:00');
+insert into ResInfo values(null,'王二','I am 王二','2021-11-01 09:30:00');
+insert into ResInfo values(null,'麻子','I am 麻子','2021-11-01 09:30:00');
+insert into ResInfo values(null,'ui','I am 测试ui','2021-11-01 09:30:00');
+
+修改数据
+update ResInfo set RSContent='同步数据实验' where RSID=4;
+
+导出表空间
+mysqldump -u root -p guomcdb>e:/guomcdb.sql
+导入表空间
+mysql –u root –p
+use guomcdb;
+source D:/Xampp/htdocs/guomc/Maintain/guomcdb.sql;
+
+导出xls
+select * from resinfo into outfile 'e:/res.xls';
+用记事本打开res.xls，格式改为ANSI再输出
+导入xls
+res.xls另存为res.csv；
+res.csv用记事本打开，格式改为UTF8再保存；
+load data infile 'e:/res.csv' into table resinfo fields terminated by ',';

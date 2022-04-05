@@ -1,0 +1,8 @@
+﻿复制D:\Xampp\apache\apache_installservice.bat，然后注释里面的pause，并以管理员身份运行；
+复制D:\Xampp\mysql\mysql_installservice.bat，然后注释里面的pause，并以管理员身份运行；
+以管理员身份运行D:\Xampp\FileZillaFTP\FileZilla server.exe；
+以管理员身份运行D:\Xampp\FileZillaFTP\FileZilla Server Interface.exe；
+Edit->Users->Add Users、设置密码->Shared folders、Add共享的文件夹并设置相应的权限；
+启动xampp-control.exe，启动Apache、MySQL、FileZilla，并在设置里面勾选上；
+在D:\Xampp\htdocs\index.php中dashboard替换为自己的网站；
+修改php.ini中的post_max_size、upload_max_filesize为1000M，表示单次POST不超过1000M，替换掉favicon.ico然后重启
